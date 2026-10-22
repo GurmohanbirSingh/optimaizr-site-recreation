@@ -10,10 +10,10 @@ type TypingTerminalProps = {
   className?: string;
 };
 
-const TYPE_MS = 34;
-const LINE_MS = 110;
-const BLOCK_PAUSE_MS = 900;
-const END_PAUSE_MS = 3200;
+const TYPE_MS = 40;
+const LINE_MS = 260;
+const BLOCK_PAUSE_MS = 1500;
+const END_PAUSE_MS = 10000;
 
 /**
  * A terminal window that runs a scripted session on its own: types each
@@ -77,9 +77,15 @@ export function TypingTerminal({ title, script, className }: TypingTerminalProps
   }, [script, runId]);
 
   useEffect(() => {
-    const scroller = scrollerRef.current;
-    if (scroller) scroller.scrollTop = scroller.scrollHeight;
-  }, [lines, typing]);
+  const scroller = scrollerRef.current;
+
+  if (scroller) {
+    scroller.scrollTo({
+      top: scroller.scrollHeight,
+      behavior: "smooth",
+    });
+  }
+}, [lines, typing]);
 
   return (
     <TerminalWindow
@@ -98,7 +104,7 @@ export function TypingTerminal({ title, script, className }: TypingTerminalProps
         </button>
       }
     >
-      <div ref={scrollerRef} className="max-h-[420px] min-h-[380px] overflow-hidden">
+      <div ref={scrollerRef} className="max-h-[420px] min-h-[380px] overflow-y-auto pr-2">
         {lines.map((line, i) =>
           line.kind === "cmd" ? (
             <p key={i} className="whitespace-pre-wrap text-foreground">
