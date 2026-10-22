@@ -5,17 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * munin design system — terminal brutalism.
+ * Cream paper, near-black ink, one highlight blue. Mono type carries the
+ * identity: heavy IBM Plex Mono display, Work Sans for reading text.
  */
 
 @theme inline {
@@ -24,8 +16,6 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -45,91 +35,86 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  /* munin tokens */
+  --color-ink: var(--ink);
+  --color-highlight: var(--highlight);
+  --color-highlight-deep: var(--highlight-deep);
+  --color-terminal: var(--terminal);
+  --color-grid: var(--grid);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --font-mono: var(--font-mono-value);
+  --font-sans: var(--font-sans-value);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --radius: 0.25rem;
+  --font-mono-value: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-sans-value: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* paper cream */
+  --background: oklch(0.956 0.008 95);
+  /* near-black ink with a cold cast */
+  --foreground: oklch(0.176 0.012 260);
+  --ink: oklch(0.176 0.012 260);
+  /* highlight blue — filled word-boxes, badges, buttons */
+  --highlight: oklch(0.845 0.062 235);
+  /* deeper blue — links and pressed accents on cream */
+  --highlight-deep: oklch(0.52 0.13 250);
+  /* terminal sheet white */
+  --terminal: oklch(0.995 0.002 95);
+  /* hairline grid on cream */
+  --grid: oklch(0.176 0.012 260 / 7%);
+
+  --card: oklch(0.995 0.002 95);
+  --card-foreground: oklch(0.176 0.012 260);
+  --popover: oklch(0.995 0.002 95);
+  --popover-foreground: oklch(0.176 0.012 260);
+  --primary: oklch(0.176 0.012 260);
+  --primary-foreground: oklch(0.956 0.008 95);
+  --secondary: oklch(0.9 0.01 95);
+  --secondary-foreground: oklch(0.176 0.012 260);
+  --muted: oklch(0.905 0.009 95);
+  --muted-foreground: oklch(0.45 0.015 260);
+  --accent: oklch(0.845 0.062 235);
+  --accent-foreground: oklch(0.176 0.012 260);
+  --destructive: oklch(0.55 0.21 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.176 0.012 260 / 14%);
+  --input: oklch(0.176 0.012 260 / 14%);
+  --ring: oklch(0.52 0.13 250);
+  --good: oklch(0.55 0.15 155);
+  --warn: oklch(0.55 0.15 75);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.145 0.01 260);
+  --foreground: oklch(0.955 0.008 95);
+  --ink: oklch(0.955 0.008 95);
+  --highlight: oklch(0.845 0.062 235);
+  --highlight-deep: oklch(0.845 0.062 235);
+  --terminal: oklch(0.205 0.012 260);
+  --grid: oklch(0.955 0.008 95 / 8%);
+
+  --card: oklch(0.205 0.012 260);
+  --card-foreground: oklch(0.955 0.008 95);
+  --popover: oklch(0.205 0.012 260);
+  --popover-foreground: oklch(0.955 0.008 95);
+  --primary: oklch(0.955 0.008 95);
+  --primary-foreground: oklch(0.145 0.01 260);
+  --secondary: oklch(0.26 0.012 260);
+  --secondary-foreground: oklch(0.955 0.008 95);
+  --muted: oklch(0.26 0.012 260);
+  --muted-foreground: oklch(0.68 0.012 260);
+  --accent: oklch(0.845 0.062 235);
+  --accent-foreground: oklch(0.145 0.01 260);
+  --destructive: oklch(0.65 0.19 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.955 0.008 95 / 14%);
+  --input: oklch(0.955 0.008 95 / 16%);
+  --ring: oklch(0.845 0.062 235);
+  --good: oklch(0.72 0.15 155);
+  --warn: oklch(0.72 0.14 75);
 }
 
 @layer base {
@@ -140,5 +125,153 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans-value);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-highlight);
+    color: var(--color-ink);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ---------- type ---------- */
+
+@utility mono {
+  font-family: var(--font-mono-value);
+}
+
+@utility display {
+  font-family: var(--font-mono-value);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+@utility kicker {
+  font-family: var(--font-mono-value);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+}
+
+/* word-box: ink block with highlight text, like a terminal cursor selection */
+@utility word-box {
+  background-color: var(--color-ink);
+  color: var(--color-highlight);
+  padding: 0 0.14em;
+  box-decoration-break: clone;
+}
+
+/* ---------- surfaces ---------- */
+
+/* dotted grid paper used behind hero and terminal clusters */
+@utility grid-paper {
+  background-image: radial-gradient(var(--color-grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* faint ruled grid used on hero band */
+@utility ruled {
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+@utility terminal-sheet {
+  background-color: var(--color-terminal);
+  border: 1.5px solid var(--color-highlight);
+  box-shadow: 4px 4px 0 0 var(--color-ink);
+}
+
+/* ---------- scroll-story machinery ---------- */
+
+/* section headings and cards fade up once, then stay */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  filter: blur(5px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+@utility reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* staged feature slides in the sticky scrollytelling viewport */
+@utility stage-slide {
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+@utility stage-hidden {
+  opacity: 0;
+  transform: translateY(34px) scale(0.985);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+@utility stage-shown {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* blinking block cursor */
+@utility cursor-blink {
+  animation: munin-blink 1.05s steps(1) infinite;
+}
+
+@keyframes munin-blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* slow marquee for the ticker strip */
+@utility ticker-track {
+  animation: munin-ticker 30s linear infinite;
+}
+
+@keyframes munin-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .stage-slide {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .ticker-track,
+  .cursor-blink {
+    animation: none;
   }
 }
