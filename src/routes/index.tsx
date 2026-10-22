@@ -332,8 +332,8 @@ function Index() {
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-14 sm:pt-20">
           <Reveal>
             <p className="mono inline-flex items-center gap-2 border border-foreground/20 bg-background px-3 py-1.5 text-sm lowercase">
-              <span className="bg-ink px-1.5 text-highlight">new</span> one engine, both views ·
-              phase 1 shipped
+              <span className="bg-ink px-1.5 text-on-ink">new</span> one engine, both views · phase
+              1 shipped
             </p>
           </Reveal>
           <Reveal delay={80}>
@@ -404,10 +404,10 @@ function Index() {
 
       {/* ---------- ticker ---------- */}
       <div className="overflow-hidden border-b border-foreground/10 bg-ink py-3">
-        <div className="ticker-track mono flex w-max gap-8 text-sm lowercase text-highlight">
+        <div className="ticker-track mono flex w-max gap-8 text-sm lowercase text-on-ink">
           {[...tickerItems, ...tickerItems].map((item, i) => (
             <span key={i} className="flex items-center gap-8">
-              {item} <span className="text-highlight/40">▮</span>
+              {item} <span className="text-on-ink/40">▮</span>
             </span>
           ))}
         </div>
@@ -548,7 +548,7 @@ function Index() {
                 <div className="mono terminal-sheet p-6">
                   <p className="text-xs lowercase text-muted-foreground">{p.phase}</p>
                   <p className="mt-3 text-lg font-semibold lowercase">{p.title}</p>
-                  <p className="mt-4 inline-block bg-ink px-2 py-1 text-xs lowercase text-highlight">
+                  <p className="mt-4 inline-block bg-ink px-2 py-1 text-xs lowercase text-on-ink">
                     {p.status}
                   </p>
                 </div>
@@ -597,7 +597,7 @@ function Index() {
       <section id="try" className="scroll-mt-16 border-t border-foreground/10 bg-ink text-background">
         <div className="mx-auto max-w-6xl px-4 py-28 text-center">
           <Reveal>
-            <p className="kicker text-highlight/70">// try it</p>
+            <p className="kicker text-on-ink/70">// try it</p>
             <h2 className="display mt-5 text-4xl sm:text-6xl">
               try it on your <span className="word-box">own history</span>.
             </h2>

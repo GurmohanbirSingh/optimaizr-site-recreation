@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Logo({ className }: { className?: string }) {
@@ -16,7 +17,7 @@ export function Logo({ className }: { className?: string }) {
 
 const navLinks = [
   { label: "features", to: "/", hash: "features" },
-  { label: "phases", to: "/releases" },
+  { label: "Docs", to: "/releases" },
   { label: "demo", to: "/demo" },
   { label: "faq", to: "/", hash: "faq" },
 ] as const;
@@ -41,17 +42,18 @@ export function Nav() {
         </nav>
         <div className="flex items-center gap-2">
           <a
-            href="https://github.com"
+            href="https://github.com/GurmohanbirSingh/optimaizr-site-recreation/"
             target="_blank"
             rel="noreferrer"
             className="mono hidden items-center gap-1.5 border border-foreground/20 px-3 py-2 text-sm transition-colors hover:bg-muted md:inline-flex"
           >
-            ★ Star on GitHub
+            <Github className="size-4" aria-hidden="true" />
+            Star on GitHub
           </a>
           <Link
             to="/"
             hash="try"
-            className="mono bg-highlight px-3 py-2 text-sm font-medium text-ink shadow-[3px_3px_0_0_var(--color-ink)] transition-transform hover:-translate-y-0.5"
+            className="mono bg-highlight px-3 py-2 text-sm font-medium text-on-highlight shadow-[3px_3px_0_0_var(--color-ink)] transition-transform hover:-translate-y-0.5"
           >
             Install the CLI
           </Link>

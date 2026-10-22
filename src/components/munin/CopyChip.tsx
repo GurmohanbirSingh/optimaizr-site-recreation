@@ -26,12 +26,12 @@ export function CopyChip({ command, className }: CopyChipProps) {
         (className ?? "")
       }
     >
-      <span className="text-highlight">$</span>
+      <span className="text-on-ink">$</span>
       <span className="whitespace-nowrap">{command}</span>
       <button
         type="button"
         onClick={copy}
-        className="cursor-pointer bg-highlight px-2 py-1 text-xs font-medium lowercase text-ink transition-transform hover:scale-105"
+        className="cursor-pointer bg-highlight px-2 py-1 text-xs font-medium lowercase text-on-highlight transition-transform hover:scale-105"
       >
         {copied ? "copied ✓" : "copy"}
       </button>

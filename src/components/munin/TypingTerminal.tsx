@@ -92,7 +92,7 @@ export function TypingTerminal({ title, script, className }: TypingTerminalProps
             setLines([]);
             setRunId((n) => n + 1);
           }}
-          className="mono cursor-pointer border border-highlight/60 px-2 py-0.5 text-xs lowercase text-highlight transition-colors hover:bg-highlight hover:text-ink"
+          className="mono cursor-pointer border border-highlight/60 px-2 py-0.5 text-xs lowercase text-highlight transition-colors hover:bg-highlight hover:text-on-highlight"
         >
           ↻ replay
         </button>

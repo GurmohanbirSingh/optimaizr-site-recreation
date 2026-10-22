@@ -21,7 +21,7 @@ export function TerminalWindow({
 }: TerminalWindowProps) {
   return (
     <div className={cn("terminal-sheet flex flex-col", className)}>
-      <div className="mono flex items-center gap-2 border-b border-highlight bg-ink px-3 py-1.5 text-xs text-highlight">
+      <div className="mono flex items-center gap-2 border-b border-highlight bg-ink px-3 py-1.5 text-xs text-on-ink">
         <span className="size-2 rounded-full bg-highlight" />
         <span className="size-2 rounded-full border border-highlight/60" />
         <span className="size-2 rounded-full border border-highlight/60" />
