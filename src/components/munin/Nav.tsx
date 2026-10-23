@@ -51,7 +51,7 @@ export function Nav() {
             Star on GitHub
           </a>
           <Link
-            to="/"
+            to="https://www.npmjs.com/package/@munin-cli/cli?activeTab=readme"
             hash="try"
             className="mono bg-highlight px-3 py-2 text-sm font-medium text-on-highlight shadow-[3px_3px_0_0_var(--color-ink)] transition-transform hover:-translate-y-0.5"
           >
