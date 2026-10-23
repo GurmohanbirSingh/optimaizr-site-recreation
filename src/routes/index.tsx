@@ -351,7 +351,7 @@ function Index() {
           </Reveal>
           <Reveal delay={240}>
             <div className="mt-9 flex flex-wrap items-center gap-5">
-              <CopyChip command="npm i -g munin" />
+              <CopyChip command="npm i @munin-cli/cli" />
               <p className="mono text-sm text-muted-foreground">
                 then run <span className="text-foreground">munin report</span>, one of 9 commands
               </p>

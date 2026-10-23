@@ -11,13 +11,13 @@ export const Route = createFileRoute("/releases")({
       {
         name: "description",
         content:
-          "The munin command reference: top-level npm commands, workspace commands, the CLI binary, the reader/analyze/scan harnesses, environment variables, tests and planned commands.",
+          "The munin help screen: start here, look closer, about, the flags most commands take, help and environment — every command as it runs today.",
       },
       { property: "og:title", content: "munin — docs, in plain words" },
       {
         property: "og:description",
         content:
-          "Every munin command, flag and exit code in plain boxes: harnesses, environment variables, tests and planned-but-not-wired commands.",
+          "Every munin command and flag in plain boxes, grouped the way the help screen prints them.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -38,175 +38,77 @@ type Doc = {
 const docs: Doc[] = [
   {
     num: "1",
-    title: "top-level npm commands",
+    title: "start here",
     status: "shipped",
-    meta: "repo root",
-    blurb: "Run from the repository root.",
+    meta: "munin",
+    blurb: "Your usage, waste and the biggest win.",
     commands: [
-      "npm ci — clean install from package-lock.json",
-      "npm install — install/update dependencies",
-      "npm run build — build all workspaces: core, local, cli",
-      "npm run typecheck — build first, then typecheck every workspace",
-      "npm test — build first, then run the full test suite with node --test",
-      "npm run reader -- <flags> — build, then run the reader/debug harness",
-      "npm run analyze -- <flags> — build, then run the analysis/report harness",
-      "npm run scan -- <flags> — build, then run the scan/ledger/watch harness",
-      "npm run format — run prettier and rewrite files",
-      "npm run format:check — check formatting without writing",
-      "lifecycle scripts run automatically: npm run pretypecheck · npm run pretest",
+      "munin              your usage, waste and the biggest win",
+      "munin scan         spend, findings and data health",
+      "munin sessions     costliest sessions and where the cost climbs",
+      "munin live         watch calls as they happen (also munin watch)",
+      "munin desktop      open the Munin desktop app",
     ],
   },
   {
     num: "2",
-    title: "workspace commands",
+    title: "look closer",
     status: "shipped",
-    meta: "workspaces",
-    blurb: "Useful when working on one package only.",
+    meta: "munin",
+    blurb: "Where the money goes, and only the opportunities.",
     commands: [
-      "npm run build -w packages/core · packages/local · apps/cli",
-      "npm run typecheck -w packages/core · packages/local · apps/cli",
-      "npm run dev -w packages/core · packages/local · apps/cli — tsc --watch",
-      "npm run build --workspaces --if-present",
-      "npm run typecheck --workspaces --if-present",
+      "munin why          where the money goes: model, project and kind of work",
+      "munin tokens       token analytics and the priciest calls (also munin analytics)",
+      "munin waste        only the opportunities, each with its fix",
+      "munin show <rule>  the calls a recommendation touches",
     ],
   },
   {
     num: "3",
-    title: "cli binary",
+    title: "about",
     status: "shipped",
-    meta: "dist/cli.js",
-    blurb: "The CLI is built to apps/cli/dist/cli.js.",
+    meta: "munin",
+    blurb: "What can be read, and what is collected.",
     commands: [
-      "node apps/cli/dist/cli.js --version",
-      "node apps/cli/dist/cli.js -v",
-      "munin --version · munin -v — when the workspace binary is linked or installed",
-      "node apps/cli/dist/cli.js — prints the version plus “commands are not wired yet”, exits 1",
-      "node apps/cli/dist/cli.js --help — same output as no version flag",
+      "munin providers    what can be read, and from where",
+      "munin privacy      what is collected, stored and sent (also munin security)",
     ],
   },
   {
     num: "4",
-    title: "reader harness",
+    title: "most commands take",
     status: "shipped",
-    meta: "harness",
-    blurb: "Command form: npm run reader -- [mode] [--db <path>] [--json]",
+    meta: "flags",
+    blurb: "Shared flags, honored across the command set.",
     commands: [
-      "--schema — detect schema, tables and session counts. This is the default mode",
-      "--rows — raw v2 row counts: messages, tools, text chars, instructions",
-      "--summary — aggregate sessions/messages/model calls and token totals",
-      "--reconcile — compare session-level aggregates with message-level sums",
-      "--check-privacy — check the normalized dataset for banned keys",
-      "--session <id> — session-scoped summary, cannot combine with another mode",
-      "--db <path> — override the opencode database path",
-      "--json — structured JSON output, honored by summary, session, reconcile and privacy",
-      "examples: npm run reader -- --summary --json · --reconcile · --db /path/to/opencode.db --schema",
-      "exit codes: 0 success · 1 runtime/source failure · 64 usage error / conflicting modes",
+      "--days N           only the last N days",
+      "--project STR      filter by project path",
+      "--tz ZONE          day-bucket zone: utc, local or an IANA name",
+      "--db PATH          OpenCode database path",
+      "--state-dir PATH   Munin state directory",
+      "--why              show every calculation and assumption",
+      "--json             machine-readable output",
     ],
   },
   {
     num: "5",
-    title: "analyze harness",
+    title: "help",
     status: "shipped",
-    meta: "harness",
-    blurb: "Command form: npm run analyze -- [mode] [options]",
-    commands: [
-      "--totals — totals, window, token breakdown, cost, savings",
-      "--models — spend/token table by provider/model",
-      "--sessions — session table with calls, tokens, cache hit rate, cost",
-      "--cache — cache traffic, hit rate and instruction-prefix grouping",
-      "--findings — findings, recommendations and rule coverage",
-      "--report — full text report including data health",
-      "--events — per-call event table",
-      "--session <id> — one session plus its calls and failed attempts",
-      "--db <path> · --tz <zone> · --json · --check-privacy",
-      "--decide <viewed|applied|done|dismissed> <rule> — record a decision, writes to the decision store",
-      "--verify-state — print verification state for every rule",
-      "--accept-risk <rule> — accept manual risk for a manual-verification rule",
-      "behavior: --decide with no data mode defaults to --findings; no mode and no state action exits 64",
-      "exit codes: 0 success · 1 runtime/source/rule failure · 64 usage error",
-    ],
+    meta: "munin",
+    blurb: "Every command has its own help.",
+    commands: ["munin help <command>    that command's own flags"],
   },
   {
     num: "6",
-    title: "scan harness",
+    title: "environment",
     status: "shipped",
-    meta: "harness",
-    blurb: "Command form: npm run scan -- [options]",
+    meta: "munin",
+    blurb: "Paths and runtime as munin sees them right now.",
     commands: [
-      "--db <path> — override the opencode database path",
-      "--state-dir <path> — override munin's state directory",
-      "--full — read all sessions and reconcile the ledger",
-      "--repair — rewrite ledger slices when --full finds drift. Requires --full",
-      "--check-privacy — validate slice/snapshot journals and the candidate cursor",
-      "--watch — poll the database for changes",
-      "--interval <ms> — watch interval, default 2000, minimum 500",
-      "--snapshots — list saved snapshots and show the latest trend",
-      "--results — compare applied changes with before/after usage",
-      "--tz <zone> — day-bucket timezone · --help, -h — show scan usage",
-      "rules: --snapshots and --results are mutually exclusive and cannot pair with --full, --repair, --watch or --check-privacy",
-      "exit codes: 0 success · 1 runtime/source failure · 64 usage error",
-    ],
-  },
-  {
-    num: "7",
-    title: "environment variables",
-    status: "shipped",
-    meta: "env vars",
-    blurb: "These affect the harnesses and path resolution.",
-    commands: [
-      "MUNIN_DB — source database path. Wins over settings",
-      "MUNIN_DIR — munin state root. Defaults to <home>/.munin",
-      "XDG_DATA_HOME — replaces the data root when absolute",
-      "MUNIN_DEBUG — print stack traces for expected failures",
-      "precedence: --db > MUNIN_DB > the db key in $MUNIN_DIR/config.json > opencode default",
-      "opencode default: <home>/.local/share/opencode/opencode.db",
-      "example: MUNIN_DIR=/tmp/munin-state npm run analyze -- --totals",
-    ],
-  },
-  {
-    num: "8",
-    title: "targeted test commands",
-    status: "shipped",
-    meta: "node --test",
-    blurb: "The official test command is npm test. For a single test file, build first.",
-    commands: [
-      "npm test",
-      "npm run build && node --test tests/unit/scan-runtime.test.mjs",
-      "npm run build && node --test tests/unit/analyze-report.test.mjs",
-      "replace the filename with any file under tests/unit/",
-    ],
-  },
-  {
-    num: "9",
-    title: "planned cli commands, not wired yet",
-    status: "spec'd",
-    meta: "not wired",
-    blurb:
-      "Listed in docs/parity-matrix.md as planned surface, but apps/cli does not dispatch them yet.",
-    commands: [
-      "munin · munin waste · munin show <rule> · munin why",
-      "munin sessions · munin tokens · munin report",
-      "munin apply · munin undo · munin simulate --to <model>",
-      "munin card · munin verify --replay · munin providers · munin privacy",
-      "phase 5 functionality is reachable only through the harnesses",
-      "npm run scan · npm run scan -- --watch · npm run scan -- --results",
-      "do not document these as working commands",
-    ],
-  },
-  {
-    num: "10",
-    title: "quick reference",
-    status: "shipped",
-    meta: "cheat sheet",
-    blurb: "The same commands, grouped for copy-paste.",
-    commands: [
-      "setup: npm ci · npm run build · npm run typecheck · npm test",
-      "reader: npm run reader -- --schema · --summary · --reconcile",
-      "analysis: npm run analyze -- --totals · --findings · --report · --events",
-      "scan: npm run scan · --full · --watch · --snapshots · --results",
-      "formatting: npm run format · npm run format:check",
-      "cli version: node apps/cli/dist/cli.js --version",
-      "accuracy note: --rules is not implemented — use --findings or --verify-state",
+      "database /home/parth/.local/share/opencode/opencode.db (default, ready)",
+      "state    /home/parth/.munin",
+      "settings /home/parth/.munin/config.json",
+      "runtime  node v24.21.0 linux x64",
     ],
   },
 ];
@@ -237,9 +139,8 @@ function Releases() {
             every command, <span className="word-box">in plain words</span>.
           </h1>
           <p className="mt-7 max-w-xl text-lg text-muted-foreground">
-            The command reference behind munin: ten boxes, one per section, each with the exact
-            commands as they run today. Section 9 is the one exception — planned commands that are
-            not wired yet.
+            The help screen behind munin: six boxes, one per group, each with the exact commands as
+            they run today.
           </p>
         </Reveal>
       </section>
@@ -270,8 +171,7 @@ function Releases() {
                 <p className="mt-4 text-xs lowercase text-muted-foreground">commands</p>
                 <ul className="mt-1 space-y-1">
                   {doc.commands.map((d) => (
-                    <li key={d} className="lowercase">
-                      <span className="text-highlight-deep">→ </span>
+                    <li key={d} className="whitespace-pre">
                       {d}
                     </li>
                   ))}
